@@ -1,0 +1,31 @@
+.task {
+  background: #f4f4f4;
+  margin: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  line-height: 1.5;
+  text-decoration: none;
+  box-shadow: inset 0 0 0 0 #f8de7e;
+  transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.task.reminder {
+  border-left: 5px solid green;
+}
+
+.task h3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.task:hover {
+  color: black;
+  box-shadow: inset 450px 50px 0 0 #f8de7e;
+}
+
+/*Presentational styles*/
+.task {
+  line-height: 1.5;
+  text-decoration: none;
+}
