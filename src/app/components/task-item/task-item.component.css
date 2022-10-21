@@ -5,7 +5,7 @@
   cursor: pointer;
   line-height: 1.5;
   text-decoration: none;
-  box-shadow: inset 0 0 0 0 #fdffcd;
+  box-shadow: inset 0 0 0 0 #98fb98;
   transition: color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
@@ -21,7 +21,7 @@
 
 .task:hover {
   color: black;
-  box-shadow: inset 450px 50px 0 0 #fdffcd;
+  box-shadow: inset 450px 50px 0 0 #98fb98;
 }
 
 /*Presentational styles*/
