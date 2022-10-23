@@ -21,8 +21,8 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  toggleAddTask() {
-    this.uiService.toggleAddTask();
+  toggleAddTaskForm() {
+    this.uiService.toggleAddTaskForm();
   }
 
   hasRoute(route: string) {

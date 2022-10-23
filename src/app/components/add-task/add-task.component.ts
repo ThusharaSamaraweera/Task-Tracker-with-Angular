@@ -1,13 +1,19 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Task } from 'src/app/Task.model';
 import { UiService } from 'src/app/services/ui.service';
 import { Subscription } from 'rxjs';
+
 @Component({
   selector: 'app-add-task',
   templateUrl: './add-task.component.html',
   styleUrls: ['./add-task.component.css'],
 })
 export class AddTaskComponent implements OnInit {
+  @Input() task: Task = {
+    content: '',
+    day: '',
+    reminder: false,
+  };
   content!: string;
   day!: string;
   reminder: boolean = false;
@@ -21,7 +27,10 @@ export class AddTaskComponent implements OnInit {
       .subscribe((value) => (this.showAddTask = value));
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.task.content = 'hi'
+    console.log(this.task);
+  }
 
   onSubmit() {
     const currentTime = new Date();

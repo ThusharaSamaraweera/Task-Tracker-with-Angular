@@ -10,7 +10,7 @@ export class UiService {
 
   constructor() { }
 
-  toggleAddTask(): void {
+  toggleAddTaskForm(): void {
     this.showAddTask = !this.showAddTask;
     this.subject.next(this.showAddTask);
   }

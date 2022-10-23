@@ -10,6 +10,7 @@ import { Task } from 'src/app/Task.model';
 })
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
+  updatingTask!: Task;
 
   constructor(private taskService: TaskService, private uiService: UiService) {}
 
@@ -22,11 +23,7 @@ export class TasksComponent implements OnInit {
   }
 
   deleteTask(id: number) {
-    this.taskService
-      .deleteTask(id)
-      .subscribe(
-        () => (this.getTasks())
-      );
+    this.taskService.deleteTask(id).subscribe(() => this.getTasks());
   }
 
   onToggleReminder(task: Task) {
@@ -38,8 +35,8 @@ export class TasksComponent implements OnInit {
     this.taskService.addTask(task).subscribe(() => this.getTasks());
   }
 
-  updateTask(task: Task) {
-    console.log(task)
-
+  fillUpdateForm(updatingTask: Task) {
+    console.log(updatingTask);
+    this.updatingTask = updatingTask;
   }
 }

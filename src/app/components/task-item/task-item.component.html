@@ -6,7 +6,9 @@
   <h3>
     {{ task.content }}
     <div>
-      <fa-icon [icon]="faPenToSquare" [ngStyle]="{ color: 'red', marginRight: '1em' }"></fa-icon>
+      <fa-icon [icon]="faPenToSquare" [ngStyle]="{ color: 'red', marginRight: '1em' }"
+        (click)="handleOnClickUpdateTask()"
+      ></fa-icon>
       <fa-icon
         [icon]="faTimes"
         [ngStyle]="{ color: 'red' }"

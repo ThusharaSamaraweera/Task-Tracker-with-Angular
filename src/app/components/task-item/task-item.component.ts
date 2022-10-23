@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from 'src/app/Task.model';
 import { faTimes, faPenToSquare } from '@fortawesome/free-solid-svg-icons';
+import { UiService } from 'src/app/services/ui.service';
 
 @Component({
   selector: 'app-task-item',
@@ -11,11 +12,12 @@ export class TaskItemComponent implements OnInit {
   @Input() task!: Task;
   @Output() onDeleteTask: EventEmitter<Task> = new EventEmitter();
   @Output() onToggleReminder: EventEmitter<Task> = new EventEmitter();
+  @Output() fillUpdateForm: EventEmitter<Task> = new EventEmitter();
 
   faTimes: any = faTimes;
   faPenToSquare: any = faPenToSquare;
 
-  constructor() {}
+  constructor(private uiService: UiService) {}
 
   ngOnInit(): void {}
 
@@ -25,5 +27,10 @@ export class TaskItemComponent implements OnInit {
 
   onToggle() {
     this.onToggleReminder.emit(this.task);
+  }
+
+  handleOnClickUpdateTask() {
+    this.uiService.toggleAddTaskForm()
+    this.fillUpdateForm.emit(this.task)
   }
 }
