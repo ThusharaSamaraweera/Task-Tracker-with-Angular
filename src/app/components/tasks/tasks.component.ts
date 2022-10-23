@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from 'src/app/services/task.service';
+import { UiService } from 'src/app/services/ui.service';
 import { Task } from 'src/app/Task.model';
 
 @Component({
@@ -10,9 +11,13 @@ import { Task } from 'src/app/Task.model';
 export class TasksComponent implements OnInit {
   tasks: Task[] = [];
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService, private uiService: UiService) {}
 
   ngOnInit(): void {
+    this.getTasks();
+  }
+
+  getTasks(): void {
     this.taskService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
@@ -20,7 +25,7 @@ export class TasksComponent implements OnInit {
     this.taskService
       .deleteTask(id)
       .subscribe(
-        () => (this.tasks = this.tasks.filter((task) => task.id !== id))
+        () => (this.getTasks())
       );
   }
 
@@ -30,7 +35,11 @@ export class TasksComponent implements OnInit {
   }
 
   addTask(task: Task) {
-    console.log(task);
-    this.taskService.addTask(task).subscribe((task) => this.tasks.push(task));
+    this.taskService.addTask(task).subscribe(() => this.getTasks());
+  }
+
+  updateTask(task: Task) {
+    console.log(task)
+
   }
 }
